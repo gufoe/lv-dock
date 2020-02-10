@@ -1,0 +1,1 @@
+docker-compose run -v $(pwd)/app/:/app/ -w /app/ -p 6663:6663 shell yarn hot --host 0.0.0.0 --port 6663 --liveReload

@@ -1,0 +1,2 @@
+sudo chown $USER:www-data . -R
+sudo chmod g=u . -R

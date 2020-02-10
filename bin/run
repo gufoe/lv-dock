@@ -1,0 +1,1 @@
+docker-compose run -v $(pwd)/app/:/app/ --user www-data -w /app/ shell "$@"
