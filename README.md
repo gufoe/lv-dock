@@ -13,11 +13,12 @@ cp app/.env.example app/.env
 
 ## Run
 ```bash
-./bin/start
+./bin/start -d
+./bin/art migrate # updates database schema
 ```
 
 ## Dev mode
 ```bash
-./bin/start # as usual
+./bin/start
 ./bin/dev # live app.js and app.css files with hot reloading
 ```
