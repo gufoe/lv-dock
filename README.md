@@ -22,3 +22,9 @@ cp app/.env.example app/.env
 ./bin/start
 ./bin/dev # live app.js and app.css files with hot reloading
 ```
+
+## Database Backup
+```bash
+./bin/db-dump /tmp/checkpoint.bak
+./bin/db-restore /tmp/checkpoint.bak
+```
