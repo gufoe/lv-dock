@@ -1,1 +1,1 @@
-docker-compose exec --user www-data web app/artisan "$@"
+docker-compose run --user www-data shell app/artisan "$@"

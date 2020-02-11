@@ -1,0 +1,18 @@
+#!/bin/bash
+set -e
+cd "$(dirname "$0")/../"
+
+FILE=$1
+USER=postgres
+DB=postgres
+
+
+docker-compose exec db psql -U $USER -c "DROP SCHEMA public CASCADE;"
+docker-compose exec db psql -U $USER -c "CREATE SCHEMA public;"
+
+echo "Copying db"
+gunzip -c $FILE | docker-compose exec -T db bash -c 'cat > /tmp/restore.bak'
+echo "Start import"
+docker-compose exec db pg_restore -d $DB  -U $USER -Fc /tmp/restore.bak
+echo "Cleaning up"
+docker-compose exec db bash -c 'rm /tmp/restore.bak'

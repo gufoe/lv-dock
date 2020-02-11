@@ -2,31 +2,39 @@ version: '3'
 
 services:
   db:
-    image: postgres
+    image: postgres:11-alpine
     restart: always
     environment:
       POSTGRES_PASSWORD: iknow
     volumes:
-      - ./db/:/db/
+      - ./db/:/var/lib/postgresql/data/
 
   web:
     image: web
     build: .
+    restart: always
     entrypoint: /app/artisan serve --host 0.0.0.0 --port 6660
     volumes:
       - ./app/:/app/
     ports:
       - 6660:6660
+    depends_on:
+      - db
 
   shell:
     image: web
     volumes:
       - ./app/:/app/
+    depends_on:
+      - db
 
   adminer:
     image: web
+    restart: always
+    entrypoint: bash -c 'echo Serving on http://127.0.0.1:6661 && php -S 0.0.0.0:6661 /app/adminer.php'
     volumes:
       - ./app/database/:/app/
-    entrypoint: bash -c 'echo Serving on http://127.0.0.1:6661 && php -S 0.0.0.0:6661 /app/adminer.php'
     ports:
       - 6661:6661
+    depends_on:
+      - db

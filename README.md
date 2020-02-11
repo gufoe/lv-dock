@@ -7,6 +7,7 @@ Please note this is made mostly for development and is not supposed to handle a 
 cp app/.env.example app/.env
 ./bin/fix-fs
 ./bin/run composer install
+./bin/art migrate # updates database schema
 ./bin/yarn install
 ./bin/yarn production # to build app.js and app.css files
 ```
@@ -14,7 +15,6 @@ cp app/.env.example app/.env
 ## Run
 ```bash
 ./bin/start -d
-./bin/art migrate # updates database schema
 ```
 
 ## Dev mode

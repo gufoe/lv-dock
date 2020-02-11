@@ -1,0 +1,4 @@
+#!/bin/bash
+cd "$(dirname "$0")/../"
+out_file=$1
+docker-compose exec -T db pg_dump -U postgres -Fc -d postgres | gzip > $out_file
