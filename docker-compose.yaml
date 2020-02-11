@@ -10,7 +10,6 @@ services:
       - ./db/:/var/lib/postgresql/data/
 
   server:
-    image: web
     build: .
     restart: always
     user: root
@@ -21,7 +20,7 @@ services:
       - db
 
   shell:
-    image: web
+    build: .
     volumes:
       - ./app/:/app/
     depends_on:
@@ -38,7 +37,7 @@ services:
       - 6660:80
 
   adminer:
-    image: web
+    build: .
     restart: always
     entrypoint: bash -c 'echo Serving on http://127.0.0.1:6661 && php -S 0.0.0.0:6661 /app/adminer.php'
     volumes:
