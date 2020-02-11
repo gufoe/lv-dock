@@ -1,6 +1,4 @@
-# Laravel Vue Docker Config
-
-Please note this is made mostly for development and is not supposed to handle a lot of workload.
+# Laravel + Vue + Nginx + Postgres
 
 ## Setup:
 ```bash

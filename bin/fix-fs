@@ -1,2 +1,3 @@
-sudo chown $USER:www-data . -R
-sudo chmod g=u . -R
+sudo chown $USER:www-data app -R
+sudo chmod g=u app -R
+sudo chmod a+rx app -R
